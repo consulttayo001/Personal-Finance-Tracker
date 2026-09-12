@@ -11,7 +11,8 @@ export default function BudgetTracker() {
           .filter((t) => t.type === "expense" && t.category === cat)
           .reduce((sum, t) => sum + t.amount, 0);
         const budget = budgets[cat] || 0;
-        const percent = budget > 0 ? Math.min((spent / budget) * 100, 100) : 0;         const overBudget = budget > 0 && spent > budget;
+        const percent = budget > 0 ? Math.min((spent / budget) * 100, 100) : 0;         
+        const overBudget = budget > 0 && spent > budget;
         return (
           <div key={cat}>
             <div className="flex justify-between text-sm mb-1">
